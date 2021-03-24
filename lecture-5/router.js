@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const doctorsController = require('./controllers/doctors')
 
-router.get('/heheh', (req, res) => {
-  res.send('ova e GET na /ghehhe');
-});
+router
+      .get('/doctors', doctorsController.fetch)
+      .post('/doctors', doctorsController.create)
 
 module.exports = router;
