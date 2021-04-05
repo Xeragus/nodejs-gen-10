@@ -1,6 +1,9 @@
 const express = require('express');
 const api = express();
-const router = require('./router')
+const router = require('./router');
+require('../../config/db');
+
+api.use(express.json());
 
 api.use('/api/v1/auth', router);
 
