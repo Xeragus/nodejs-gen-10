@@ -73,5 +73,21 @@ module.exports = {
         message: error.message
       });
     }
+  },
+  refresh_token: (req, res) => {
+    const payload = {
+      id: req.user.id,
+      email: req.user.email
+    };
+
+    const token = jwt.sign(payload, 'secret_key', {
+      expiresIn: '30m'
+    });
+
+    res.status(200).send({
+      error: false,
+      message: 'JWT successfully refreshed',
+      token
+    })
   }
 };
